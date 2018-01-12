@@ -1,18 +1,18 @@
-/*include extra css tweaks here*/
+/* include extra css tweaks here */
 body {
 	height: 100%;
 	margin: 0px;
 	padding: 0px;
-	/*change background img later*/
+	/* change background img later */
 	background-image: url('../images/giant-marmota-placeholder.jpg');
 	background-position: bottom;
-	/*change font later*/
+	/* change font later */
 	font-family: 'Metal Mania', cursive;
 }
 .jumbotron {
 	padding: 0.5em;
 }
-/*remove placeholder image later*/
+/* remove placeholder image later */
 #placeholder-img {
 	height: 150px;
 	width: 150px;
