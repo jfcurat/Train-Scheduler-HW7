@@ -12,10 +12,52 @@ var config = {
 };
 firebase.initializeApp(config);
 
+// reference to database
 var database = firebase.database();
 
+// vars to track user input
 var trainName = '';
-var destination = '';
-var firstTrainTime = '';
-var frequencyMins = '';
+var trainDestination = '';
+var trainFirstArrival = '';
+var trainFrequencyMins = '';
+
+// object to avoid in-line declaration on push request, will give key:value structure to firebase database entries
+var trainInfo = {
+    name: trainName,
+    destination: trainDestination,
+    firstArrival: trainFirstArrival,
+    frequencyMins: trainFrequencyMins,
+};
+
+// function to push trainInfo to database
+function addTrainInfo(trainInfo) {
+    firebase.database().ref().push(trainInfo);
+}
+
+$('#submitButton').on('click', function submitForm(event) {
+    // prevent submit from reloading page
+    event.preventDefault();
+
+    // get info from input boxes and save to trainInfo object
+    trainInfo.name = $('#trainNameInputBox').val().trim();
+    trainInfo.destination = $('#trainDestinationInputBox').val().trim();
+    trainInfo.firstArrival = $('#trainFirstArrivalInputBox').val().trim();
+    trainInfo.frequencyMins = $('#trainFrequencyInputBox').val().trim();
+
+    // log user input in console
+    console.log('user input name = ' + JSON.stringify(trainInfo.name));
+    console.log('user input destination = ' + JSON.stringify(trainInfo.destination));
+    console.log('user input first arrival = ' + JSON.stringify(trainInfo.firstArrival));
+    console.log('user input frequency = ' + JSON.stringify(trainInfo.frequencyMins));
+
+    // call the function that pushes trainInfo to database
+    addTrainInfo(trainInfo);
+    console.log('trainInfo = ' + JSON.stringify(trainInfo, null, 4));
+
+    // clear input boxes after submmit
+    $('#trainNameInputBox').val('');
+    $('#trainDestinationInputBox').val('');
+    $('#trainFirstArrivalInputBox').val('');
+    $('#trainFrequencyInputBox').val('');
+});
 
