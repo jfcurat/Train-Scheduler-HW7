@@ -21,6 +21,13 @@ var trainDestination = '';
 var trainFirstArrival = '';
 var trainFrequencyMins = '';
 
+// vars to track next arrival and mins away
+var nextArrival = '';
+var minsAway = 0;
+
+// var to track number of data entries
+var entryNumber = 1;
+
 // object to avoid in-line declaration on push request, will give key:value structure to firebase database entries
 var trainInfo = {
     name: trainName,
@@ -61,3 +68,11 @@ $('#submitButton').on('click', function submitForm(event) {
     $('#trainFrequencyInputBox').val('');
 });
 
+// when new data item is added to database, log in console and then use it to make new rows in trainScheduleTableBody
+database.ref().on('child_added', function(childSnapshot) {
+    console.log('the snapshot = ' + childSnapshot.val().name, childSnapshot.val().destination, childSnapshot.val().firstArrival, childSnapshot.val().frequencyMins);
+
+    $('#trainScheduleTableBody').append('<tr>' + '<th scope="row">' + entryNumber + '</th>' + '<td>' + childSnapshot.val().name + '</td>' + '<td>' + childSnapshot.val().destination + '</td>' + '<td>' + childSnapshot.val().firstArrival + '</td>' + '<td>' + childSnapshot.val().frequencyMins);
+
+    entryNumber++;
+});
