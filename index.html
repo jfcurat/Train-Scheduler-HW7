@@ -27,11 +27,79 @@
 			<!-- change jumbotron later -->
 			<h1>!!!JumboTron!!!</h1>
 		</header>
-		<section class='row text-center'>
-			<div class='col'>
-				<!-- remove placeholder img later -->
-				<img id='placeholder-img' src='./assets/images/lorempixel-placeholder.jpg'>
+		<!-- table display row -->
+		<section class='row'>
+			<div class='table-responsive'>
+				<table class='table table-striped table-hover table-dark'>
+					<thead>
+						<tr>
+							<th scope='col'>#</th>
+							<th scope='col'>Train Name</th>
+							<th scope='col'>Destination</th>
+							<th scope='col'>Frequency (mins)</th>
+							<th scope='col'>Next Arrival</th>
+							<th scope='col'>Minutes Away</th>
+						</tr>
+					</thead>
+					<tbody id='trainScheduleTableBody'>
+						<!-- replace these rows w/ jQuery adding childItems from firebase -->
+						<tr>
+							<th scope='row'>666</th>
+							<td>The John Coltrane Express</td>
+							<td>A Love Supreme</td>
+							<td>26-2</td>
+							<td>Moment's Notice</td>
+							<td>So What?</td>
+						</tr>
+						<tr>
+							<th scope='row'>667</th>
+							<td>Blorp Train</td>
+							<td>Bleepton</td>
+							<td>336</td>
+							<td>6:66</td>
+							<td>666</td>
+						</tr>
+						<tr>
+							<th scope='row'>668</th>
+							<td>Trash Train</td>
+							<td>Garbage Island</td>
+							<td>11</td>
+							<td>11:00</td>
+							<td>13</td>
+						</tr>
+						<tr>
+							<th scope='row'>669</th>
+							<td>Ghost Train</td>
+							<td>Land of Wind and Ghosts</td>
+							<td>6</td>
+							<td>17:00</td>
+							<td>5</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
+		</section>
+		<!-- input forms below -->
+		<section class='row'>
+			<form class='container-fluid'>
+				<div class='form-group'>
+					<label for='trainNameInput'>Train Name:</label>
+					<input type='text' class='form-control' id='trainNameInputBox' placeholder="Enter your train's name...">
+				</div>
+				<div class='form-group'>
+					<label for='trainDestinationInput'>Destination:</label>
+					<input type='text' class='form-control' id='trainDestinationInputBox' placeholder="Enter your train's destination...">
+				</div>
+				<div class='form-group'>
+					<label for='trainTimeInput'>First Train Time (HH:mm - Military Time):</label>
+					<input type='text' class='form-control' id='trainTimeInputBox' placeholder="Enter your train's first arrival time, in military time...">
+				</div>
+				<div class='form-group'>
+					<label for='trainFrequencyInput'>Frequency:</label>
+					<input type='text' class='form-control' id='trainFrequencyInputBox' placeholder='Enter how often your train arrives, in minutes...'>
+				</div>
+				<button type='submit' class='btn btn-primary'>Submit</button>
+			</form>
 		</section>
 	</main>
 	
