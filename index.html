@@ -25,7 +25,7 @@
 	<main class='container'>
 		<header class='jumbotron jumbotron-fluid text-center col'>
 			<!-- change jumbotron later -->
-			<h1>!!!JumboTron!!!</h1>
+			<h1>Train Scheduler</h1>
 		</header>
 		<!-- table display row -->
 		<section class='row'>
@@ -42,39 +42,15 @@
 						</tr>
 					</thead>
 					<tbody id='trainScheduleTableBody'>
-						<!-- replace these rows w/ jQuery adding childItems from firebase -->
-						<!-- <tr>
-							<th scope='row'>666</th>
-							<td>The John Coltrane Express</td>
-							<td>A Love Supreme</td>
-							<td>26-2</td>
-							<td>Moment's Notice</td>
-							<td>So What?</td>
-						</tr>
+						<!-- remove this first placeholder row later -->
 						<tr>
-							<th scope='row'>667</th>
-							<td>Blorp Train</td>
-							<td>Bleepton</td>
-							<td>336</td>
-							<td>6:66</td>
-							<td>666</td>
+							<th scope='row'>entryNumber</th>
+							<td>childSnapshot.val().name</td>
+							<td>childSnapshot.val().destination</td>
+							<td>childSnapshot.val().frequencyMins</td>
+							<td>momentMath</td>
+							<td>momentMath</td>
 						</tr>
-						<tr>
-							<th scope='row'>668</th>
-							<td>Trash Train</td>
-							<td>Garbage Island</td>
-							<td>11</td>
-							<td>11:00</td>
-							<td>13</td>
-						</tr>
-						<tr>
-							<th scope='row'>669</th>
-							<td>Ghost Train</td>
-							<td>Land of Wind and Ghosts</td>
-							<td>6</td>
-							<td>17:00</td>
-							<td>5</td>
-						</tr> -->
 					</tbody>
 				</table>
 			</div>

@@ -68,11 +68,14 @@ $('#submitButton').on('click', function submitForm(event) {
     $('#trainFrequencyInputBox').val('');
 });
 
-// when new data item is added to database, log in console and then use it to make new rows in trainScheduleTableBody
+// when new data item is added to database, take snapshot, log in console and then use it to make new rows in trainScheduleTableBody
 database.ref().on('child_added', function(childSnapshot) {
     console.log('the snapshot = ' + childSnapshot.val().name, childSnapshot.val().destination, childSnapshot.val().firstArrival, childSnapshot.val().frequencyMins);
 
-    $('#trainScheduleTableBody').append('<tr>' + '<th scope="row">' + entryNumber + '</th>' + '<td>' + childSnapshot.val().name + '</td>' + '<td>' + childSnapshot.val().destination + '</td>' + '<td>' + childSnapshot.val().firstArrival + '</td>' + '<td>' + childSnapshot.val().frequencyMins);
+// add some lines in here using moment.js to calculate the minutes til next train and then get the actual time of next train then add those values to the .append(string) below
+
+    // appending the html elements w/ snap data to display on table
+    $('#trainScheduleTableBody').append('<tr><th scope="row">' + entryNumber + '</th><td>' + childSnapshot.val().name + '</td><td>' + childSnapshot.val().destination + '</td><td>' + childSnapshot.val().frequencyMins);
 
     entryNumber++;
 });
