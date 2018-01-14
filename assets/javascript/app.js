@@ -72,10 +72,47 @@ $('#submitButton').on('click', function submitForm(event) {
 database.ref().on('child_added', function(childSnapshot) {
     console.log('the snapshot = ' + childSnapshot.val().name, childSnapshot.val().destination, childSnapshot.val().firstArrival, childSnapshot.val().frequencyMins);
 
-// add some lines in here using moment.js to calculate the minutes til next train and then get the actual time of next train then add those values to the .append(string) below
+    // add some lines in here using moment.js to calculate the minutes til next train and then get the actual time of next train then add those values to the .append(string) below
+    // current time
+    var currentTime = moment().format('HH:mm');
+    console.log('current time is: ' + currentTime); // moment(currentTime).format('HH:mm'));
+
+    // first arrival time from db
+    var firstArrivalTime = childSnapshot.val().firstArrival;
+    console.log('first arrival snapshot = ' + firstArrivalTime);
+    // moment.js formatted 1st arrival
+    var firstArrivalFormatted = moment(firstArrivalTime, 'HH:mm').subtract(1, 'years');
+    console.log('1st arrival time = ' + firstArrivalFormatted);
+
+    // frequency from db
+    var trainFrequency = childSnapshot.val().frequencyMins;
+    console.log('train frequency = ' + trainFrequency);
+
+    // difference calculated b/t firstArrival and currentTime
+    var timeDifference = moment().diff(moment(firstArrivalFormatted), 'minutes');
+    console.log('time difference = ' + timeDifference);
+
+    // time since firstArrival mod frequency = remainder
+    var remainderMins = timeDifference % trainFrequency;
+    console.log('remainder mins = ' + remainderMins);
+    
+    // time til next train calc
+    var timeTil = trainFrequency - remainderMins;
+    console.log('mins til next train = ' + timeTil);
+
+    // next train arrival time calc
+    var nextArrivalTime = moment().add(timeTil, 'minutes');
+    var nextArrivalFormatted = moment(nextArrivalTime).format('HH:mm');
+    console.log('next train arrival = ' + nextArrivalFormatted);
+
+    //if (remainderMins === 0) {nextArrivalFormatted = NOW!;}
+    if (remainderMins === 0) {
+        nextArrivalFormatted = 'NOW!';
+        timeTil = 'BOARDING!';
+    }
 
     // appending the html elements w/ snap data to display on table
-    $('#trainScheduleTableBody').append('<tr><th scope="row">' + entryNumber + '</th><td>' + childSnapshot.val().name + '</td><td>' + childSnapshot.val().destination + '</td><td>' + childSnapshot.val().frequencyMins);
+    $('#trainScheduleTableBody').append('<tr><th scope="row">' + entryNumber + '</th><td>' + childSnapshot.val().name + '</td><td>' + childSnapshot.val().destination + '</td><td>' + childSnapshot.val().frequencyMins + '</td><td>' + nextArrivalFormatted + '</td><td>' + timeTil + '</td>');
 
     entryNumber++;
 });
