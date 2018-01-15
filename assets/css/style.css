@@ -4,10 +4,9 @@ body {
 	margin: 0px;
 	padding: 0px;
 	/* change background img later */
-	background-image: url('../images/giant-marmota-placeholder.jpg');
-	background-position: bottom;
+	background-image: url('../images/background.png');
 	/* change font later */
-	font-family: 'Metal Mania', cursive;
+	font-family: 'Signika', sans-serif;
 }
 .jumbotron {
 	padding: 0.5em;

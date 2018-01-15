@@ -75,7 +75,7 @@ database.ref().on('child_added', function(childSnapshot) {
     // add some lines in here using moment.js to calculate the minutes til next train and then get the actual time of next train then add those values to the .append(string) below
     // current time
     var currentTime = moment().format('HH:mm');
-    console.log('current time is: ' + currentTime); // moment(currentTime).format('HH:mm'));
+    console.log('current time is: ' + currentTime);
 
     // first arrival time from db
     var firstArrivalTime = childSnapshot.val().firstArrival;
@@ -107,8 +107,8 @@ database.ref().on('child_added', function(childSnapshot) {
 
     //if (remainderMins === 0) {nextArrivalFormatted = NOW!;}
     if (remainderMins === 0) {
-        nextArrivalFormatted = 'NOW!';
-        timeTil = 'BOARDING!';
+        nextArrivalFormatted = 'NOW BOARDING';
+        timeTil = 'NOW BOARDING';
     }
 
     // appending the html elements w/ snap data to display on table
