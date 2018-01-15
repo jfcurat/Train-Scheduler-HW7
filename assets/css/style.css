@@ -3,16 +3,9 @@ body {
 	height: 100%;
 	margin: 0px;
 	padding: 0px;
-	/* change background img later */
 	background-image: url('../images/background.png');
-	/* change font later */
 	font-family: 'Signika', sans-serif;
 }
 .jumbotron {
 	padding: 0.5em;
-}
-/* remove placeholder image later */
-#placeholder-img {
-	height: 150px;
-	width: 150px;
 }

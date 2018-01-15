@@ -72,7 +72,7 @@ $('#submitButton').on('click', function submitForm(event) {
 database.ref().on('child_added', function(childSnapshot) {
     console.log('the snapshot = ' + childSnapshot.val().name, childSnapshot.val().destination, childSnapshot.val().firstArrival, childSnapshot.val().frequencyMins);
 
-    // add some lines in here using moment.js to calculate the minutes til next train and then get the actual time of next train then add those values to the .append(string) below
+    //moment.js action
     // current time
     var currentTime = moment().format('HH:mm');
     console.log('current time is: ' + currentTime);
@@ -80,6 +80,7 @@ database.ref().on('child_added', function(childSnapshot) {
     // first arrival time from db
     var firstArrivalTime = childSnapshot.val().firstArrival;
     console.log('first arrival snapshot = ' + firstArrivalTime);
+    
     // moment.js formatted 1st arrival
     var firstArrivalFormatted = moment(firstArrivalTime, 'HH:mm').subtract(1, 'years');
     console.log('1st arrival time = ' + firstArrivalFormatted);
